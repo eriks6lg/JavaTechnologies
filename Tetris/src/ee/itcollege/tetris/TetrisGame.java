@@ -1,6 +1,5 @@
 package ee.itcollege.tetris;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import ee.itcollege.tetris.lib.FigureGenerator;
+import ee.itcollege.tetris.parts.FigureGenerator;
 import ee.itcollege.tetris.parts.Block;
 import ee.itcollege.tetris.parts.Figure;
 
@@ -51,7 +50,7 @@ public class TetrisGame extends Application {
                 currentFigure.rotateClockwise();
                 currentFigure.rotateClockwise();
                 Block block = (Block) currentFigure.getChildren().get(0);
-                System.out.println(block.coordinateX + " " + block.coordinateY);
+                System.out.println(block.getCoordinateX() + " " + block.getCoordinateY());
             }
         });
 

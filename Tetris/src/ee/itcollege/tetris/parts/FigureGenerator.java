@@ -1,4 +1,4 @@
-package ee.itcollege.tetris.lib;
+package ee.itcollege.tetris.parts;
 
 import ee.itcollege.tetris.parts.Block;
 import ee.itcollege.tetris.parts.Figure;

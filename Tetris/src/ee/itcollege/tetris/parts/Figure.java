@@ -15,8 +15,8 @@ public class Figure extends Group {
 		ObservableList<Node> children = getChildren();
 		for(Node node: children) {
 			Block block = (Block)node;
-			block.coordinateX = block.coordinateX+deltaX*Block.SIZE;
-			block.coordinateY = block.coordinateY+deltaY*Block.SIZE;
+			block.setCoordinateX(block.getCoordinateX()+deltaX*Block.SIZE);
+			block.setCoordinateY(block.getCoordinateY()+deltaY*Block.SIZE);
 		}
 
 	}
@@ -26,7 +26,7 @@ public class Figure extends Group {
 			int[] values = new int[20];
 			for(Node node: getChildren()) {
 				Block block = (Block)node;
-				values[block.coordinateY/40] +=1;
+				values[block.getCoordinateY()/40] +=1;
 			}
 			for(int i=0; i<values.length; i++) {
 				if(values[i]==10)
@@ -44,10 +44,10 @@ public class Figure extends Group {
 				ArrayList<Block> list = new ArrayList<>();
 				for(Node node: getChildren()) {
 					Block block = (Block)node;
-					if(block.coordinateY/40 == line)
+					if(block.getCoordinateY()/40 == line)
 						list.add(block);
-					else if(block.coordinateY/40 < line)
-						block.coordinateY += Block.SIZE;
+					else if(block.getCoordinateY()/40 < line)
+						block.setCoordinateY(block.getCoordinateY() + Block.SIZE);
 				}
 				getChildren().removeAll(list);
 				numberOfLines++;
@@ -75,9 +75,8 @@ public class Figure extends Group {
 		setLayoutY(0);
 		for(Node node: getChildren()) {
 			Block block = (Block)node;
-			block.setX(block.coordinateX);
-			System.out.println(block.coordinateY);
-			block.setY(block.coordinateY);
+			block.setX(block.getCoordinateX());
+			block.setY(block.getCoordinateY());
 		}
 	}
 
@@ -93,8 +92,8 @@ public class Figure extends Group {
 				block.setX(-block.getY());
 				block.setY(x);
 
-				block.coordinateX = block.coordinateX - x + (int)block.getX();
-				block.coordinateY = block.coordinateY - y + (int)block.getY();
+				block.setCoordinateX(block.getCoordinateX() - x + (int)block.getX());
+				block.setCoordinateY(block.getCoordinateY() - y + (int)block.getY());
 			}
 		}
 
@@ -107,9 +106,9 @@ public class Figure extends Group {
 				Block ourBlock = (Block)ourNode;
 				for(Node theirNode: figure.getChildren()) {
 					Block theirBlock = (Block)theirNode;
-					if(ourBlock.coordinateX == theirBlock.coordinateX &&
-							(ourBlock.coordinateY == theirBlock.coordinateY-Block.SIZE ||
-							ourBlock.coordinateY == theirBlock.coordinateY))
+					if(ourBlock.getCoordinateX() == theirBlock.getCoordinateX() &&
+							(ourBlock.getCoordinateY() == theirBlock.getCoordinateY()-Block.SIZE ||
+							ourBlock.getCoordinateY() == theirBlock.getCoordinateY()))
 						return true;
 
 				}
@@ -126,9 +125,9 @@ public class Figure extends Group {
 
 		for(Node node: getChildren()) {
 			Block block = (Block)node;
-			if(block.coordinateX <= 0)
+			if(block.getCoordinateX() <= 0)
 				return -1;
-			else if(block.coordinateX >= 9*Block.SIZE)
+			else if(block.getCoordinateX() >= 9*Block.SIZE)
 				return 1;
 		}
 		return 0;
@@ -153,12 +152,12 @@ public class Figure extends Group {
 			Block ourBlock = (Block)ourNode;
 			for(Node theirNode: figure.getChildren()) {
 				Block theirBlock = (Block)theirNode;
-				if(ourBlock.coordinateY == theirBlock.coordinateY &&
-						ourBlock.coordinateX == theirBlock.coordinateX-Block.SIZE) {
+				if(ourBlock.getCoordinateY() == theirBlock.getCoordinateY() &&
+						ourBlock.getCoordinateX() == theirBlock.getCoordinateX()-Block.SIZE) {
 					hasRight = true;
 				}
-				if(ourBlock.coordinateY == theirBlock.coordinateY &&
-						ourBlock.coordinateX == theirBlock.coordinateX+Block.SIZE) {
+				if(ourBlock.getCoordinateY() == theirBlock.getCoordinateY() &&
+						ourBlock.getCoordinateX() == theirBlock.getCoordinateX()+Block.SIZE) {
 					hasLeft = true;
 				}
 
@@ -178,7 +177,7 @@ public class Figure extends Group {
 	public boolean reachedBottom() {
 		for(Node node: getChildren()) {
 			Block block = (Block)node;
-			if(block.coordinateY >= 19*Block.SIZE)
+			if(block.getCoordinateY() >= 19*Block.SIZE)
 				return true;
 
 		}
