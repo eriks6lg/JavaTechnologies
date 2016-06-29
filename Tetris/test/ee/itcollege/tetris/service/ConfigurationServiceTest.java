@@ -1,5 +1,6 @@
 package ee.itcollege.tetris.service;
 
+import main.java.ee.itcollege.tetris.service.ConfigurationService;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

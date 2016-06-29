@@ -1,5 +1,6 @@
 package ee.itcollege.tetris.entity;
 
+import main.java.ee.itcollege.tetris.entity.Score;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

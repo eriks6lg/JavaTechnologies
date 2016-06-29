@@ -1,5 +1,7 @@
 package ee.itcollege.tetris.parts;
 
+import main.java.ee.itcollege.tetris.parts.Block;
+import main.java.ee.itcollege.tetris.parts.Figure;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
